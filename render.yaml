@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: bfhl-api
+    env: node
+    region: singapore  # Change to your preferred region: oregon, frankfurt, singapore, etc.
+    plan: free  # or 'starter' for paid plan
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OFFICIAL_EMAIL
+        sync: false  # Set this manually in Render dashboard
+      - key: GEMINI_API_KEY
+        sync: false  # Set this manually in Render dashboard
+    autoDeploy: true
